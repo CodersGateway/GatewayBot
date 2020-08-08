@@ -8,5 +8,8 @@ import { UpdateLoop } from "./Updater";
 
 const client: BotClient = new BotClient({ token, owners });
 client.start();
-if (autoUpdate) UpdateLoop();
+if (autoUpdate) {
+    console.log("Auto update is enabled.");
+    UpdateLoop();
+}
 else console.log("Auto update disabled.");
