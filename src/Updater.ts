@@ -1,7 +1,8 @@
+import { autoUpdate } from "./Config";
 import gitRevision from "git-revision";
 import { exec, ExecException } from "child_process";
 
-const gitRev: () => string = (gitRevision as (hashType: string) => string).bind(null, "long");
+const gitRev: () => string = autoUpdate ? (gitRevision as (hashType: string) => string).bind(null, "long") : () => "";
 
 interface IExecResult {
     stdout: string;
@@ -33,11 +34,11 @@ export async function UpdateLoop(): Promise<void> {
         if (elapsed >= CheckInterval) {
             // DO STUFF
             try {
-                await execAsync("git fetch");
+                console.log("Checking for updates...");
                 const rev = gitRev();
                 if (rev !== LastRevision) {
                     // New version
-                    console.log("A new commit is available.");
+                    console.log("A new commit is available to pull.");
                     await execAsync("git pull");
                     UpdateStop = true;
                     process.exit(0);
