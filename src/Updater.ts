@@ -29,25 +29,22 @@ export let UpdateStop: boolean = false;
 export let LastRevision: string = gitRev();
 
 export async function UpdateLoop(): Promise<void> {
-    while(!UpdateStop) {
-        let elapsed = Date.now() - LastCheck;
-        if (elapsed >= CheckInterval) {
-            // DO STUFF
-            try {
-                console.log("Checking for updates...");
-                const rev = gitRev();
-                if (rev !== LastRevision) {
-                    // New version
-                    console.log("A new commit is available to pull.");
-                    await execAsync("git pull");
-                    UpdateStop = true;
-                    process.exit(0);
-                }
-            } catch (e) {
-                throw e;
+    setInterval(async () => {
+        // DO STUFF
+        try {
+            console.log("Checking for updates...");
+            const rev = gitRev();
+            if (rev !== LastRevision) {
+                // New version
+                console.log("A new commit is available to pull.");
+                await execAsync("git pull");
+                UpdateStop = true;
+                process.exit(0);
             }
-            // Set last check to now.
-            LastCheck = Date.now();
+        } catch (e) {
+            throw e;
         }
-    }
+        // Set last check to now.
+        LastCheck = Date.now();
+    }, CheckInterval);
 }
