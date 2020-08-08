@@ -15,7 +15,8 @@
     "typescript": "^3.9.7"
   },
   "scripts": {
-    "start": "node dist/Bot.js"
+    "start": "tsc && node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
