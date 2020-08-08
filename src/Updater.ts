@@ -30,8 +30,8 @@ export async function UpdateLoop(): Promise<void> {
             const res = await execAsync("git fetch");
             if (res.stderr.length > 0) { // Wut. Stderr contains the stdout I guess?!
                 // New version
-                console.log("A new commit is available to pull.\nPulling...");
-                console.log(await execAsync("git pull"));
+                console.log("Pulling new commit...");
+                console.log((await execAsync("git pull")).stderr);
                 UpdateStop = true;
                 process.exit(0);
             }
