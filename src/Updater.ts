@@ -1,5 +1,5 @@
-import { autoUpdate, updateInterval } from "./Config";
-import { exec, ExecException } from "child_process";
+import { updateInterval } from "./Config";
+import { exec } from "child_process";
 
 interface IExecResult {
     stdout: string;
