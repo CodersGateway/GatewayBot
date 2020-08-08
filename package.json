@@ -16,6 +16,7 @@
     "typescript": "^3.9.7"
   },
   "scripts": {
+    "start": "tsc && node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

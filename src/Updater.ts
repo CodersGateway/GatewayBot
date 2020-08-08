@@ -33,7 +33,7 @@ export async function UpdateLoop(): Promise<void> {
         if (elapsed >= CheckInterval) {
             // DO STUFF
             try {
-                const res = await execAsync("git fetch");
+                await execAsync("git fetch");
                 const rev = gitRev();
                 if (rev !== LastRevision) {
                     // New version
