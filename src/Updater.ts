@@ -1,4 +1,4 @@
-import { autoUpdate } from "./Config";
+import { autoUpdate, updateInterval } from "./Config";
 import gitRevision from "git-revision";
 import { exec, ExecException } from "child_process";
 
@@ -21,9 +21,7 @@ async function execAsync(command: string): Promise<IExecResult> {
     });
 }
 
-const parseinterval = Number(process.env["UPDATE_INTERVAL"]);
-
-export let CheckInterval: number = isNaN(parseinterval) ? 15000 : parseinterval;
+export let CheckInterval: number = updateInterval;
 export let LastCheck: number = Date.now();
 export let UpdateStop: boolean = false;
 export let LastRevision: string = gitRev();
