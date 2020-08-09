@@ -21,7 +21,7 @@ export async function srand(): Promise<number> {
  * @param min Minimum value. Default: 0
  */
 export function srandInRangeSync(max: number = 1, min: number = 0): number {
-    return (srandSync() * (max - min + 1) + min);
+    return (srandSync() * (max - min) + min);
 }
 
 /**
@@ -30,5 +30,5 @@ export function srandInRangeSync(max: number = 1, min: number = 0): number {
  * @param min Minimum value. Default: 0
  */
 export async function srandInRange(max: number = 1, min: number = 0): Promise<number> {
-    return ((await srand()) * (max - min + 1) + min);
+    return ((await srand()) * (max - min) + min);
 }
