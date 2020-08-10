@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c7d4af0-22cd-4b18-888d-ca307fb66be4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/commands/Economy/balance.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/colors.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597099915274</updated>
       <workItem from="1597099916667" duration="1640000" />
-      <workItem from="1597101564658" duration="412000" />
+      <workItem from="1597101564658" duration="513000" />
     </task>
     <servers />
   </component>
