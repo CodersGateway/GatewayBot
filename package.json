@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/Bot.js",
   "dependencies": {
+    "axios": "^0.19.2",
     "common-tags": "^1.8.0",
     "discord-akairo": "github:discord-akairo/discord-akairo",
     "discord.js": "github:discordjs/discord.js",
