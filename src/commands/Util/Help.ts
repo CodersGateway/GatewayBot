@@ -47,6 +47,6 @@ export default class HelpCommand extends Command {
         if (command.aliases.length > 1) embed.addField('Aliases', `\`${command.aliases.join('` `')}\``, true);
         if (command.description.examples && command.description.examples.length) embed.addField('Examples', `\`${command.aliases[0]} ${command.description.examples.join(`\`\n\`${command.aliases[0]} `)}\``, true);
 
-        return message.channel!.send(embed);
+        return message.util.send(embed);
     }
 }

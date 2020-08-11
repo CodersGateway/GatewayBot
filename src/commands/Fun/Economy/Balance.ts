@@ -33,7 +33,7 @@ export default class BalanceCommand extends Command {
             .setColor("RANDOM")
             .addField("Balance", `**$${money}**`)
         //@ts-ignore
-        message.channel.send(embed)
+        message.util.send(embed)
 
     }
 }
