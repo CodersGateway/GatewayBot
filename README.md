@@ -1,4 +1,14 @@
-# This bot is completely open source
-## if you wish to contribute simply fork, make your changes, and submit a pull request
-**before making a pull request make sure your changes work**
-# contributors will be listed on the bots info command
+# GatewayBot
+
+GatewayBot is a complete open source bot written in TS (TypeScript).
+
+  - Discord: https://discord.gg/ymGcjeX
+
+## Want to contribute? Here is how:
+
+  - Fork the repository
+  - Make your changes
+  - Make sure your changes work
+  - Submit a pull request
+
+##### As a return for your contribution you will be listed on the bots information command.
