@@ -40,6 +40,7 @@ export default class DailyCommand extends Command {
 
             //@ts-ignore
             db.add(`money_${message.author.id}`, amount)
+            //@ts-ignore
             db.set(`daily_${message.author.id}`, Date.now())
         }
     }
