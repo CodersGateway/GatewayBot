@@ -10,6 +10,9 @@ export default class ReadyListener extends Listener {
     }
     public async exec() {
         console.log(`logged in as ${this.client.user.tag} (${this.client.user.id})`)
+        this.client.user.setPresence({
+            status: 'dnd'
+        })
     }
     
 } 
