@@ -2,7 +2,7 @@ import { Command} from "discord-akairo";
 import { Message, MessageEmbed} from "discord.js";
 import fetch from "node-fetch";
 
-export default ChangemymindCommand extends Command {
+export default class ChangemymindCommand extends Command {
     public constructor() {
         super('changemymind', {
             aliases: ['changemymind', 'cmm'],
