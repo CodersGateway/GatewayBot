@@ -14,6 +14,7 @@ export default class TrumptweetCommand extends Command {
                 {
                     id: 'text',
                     type: 'string',
+                    match: 'rest',
                     prompt: {
                         start: (msg: Message) => `${msg.author} please provide text`
                     }
