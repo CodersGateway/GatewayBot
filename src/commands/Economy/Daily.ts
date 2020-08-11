@@ -1,4 +1,4 @@
-import * as ms from "parse-ms";
+import ms from "parse-ms";
 import { Message, MessageEmbed} from "discord.js";
 import { Command } from "discord-akairo";
 import db from "quick.db"
@@ -21,6 +21,7 @@ export default class DailyCommand extends Command {
         let daily = db.fetch(`daily_${message.author.id}`);
 
         if (daily != null && timeout - (Date.now() - daily) > 0) {
+            //@ts-ignore
             let time = ms(timeout - (Date.now() - daily));
             let embed = new MessageEmbed()
                 .setColor("#9cc4e4")
@@ -37,6 +38,7 @@ export default class DailyCommand extends Command {
                 .setDescription(`**$${amount}** was placed in your wallet`)
             message.channel.send(embed)
 
+            //@ts-ignore
             db.add(`money_${message.author.id}`, amount)
             db.set(`daily_${message.author.id}`, Date.now())
         }
