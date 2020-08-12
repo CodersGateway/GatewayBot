@@ -28,7 +28,6 @@ export default class TrumptweetCommand extends Command {
             fetch(`https://nekobot.xyz/api/imagegen?type=trumptweet&text=${text}`)
                 .then((res) => res.json())
                 .then((body) => {
-                    console.log(body)
                     let embed = new MessageEmbed()
                         .setTitle(`Here ya go ${message.author.username}`)
                         .setImage(body.message)
