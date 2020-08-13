@@ -84,8 +84,10 @@ export default class EvalCommand extends Command {
                     message.reply(emb);
                 }
             } else {
-                message.reply("no valid codeblocks found.\nMake sure you are using `js` or `ts` blocks.");
+                message.reply("no **valid** codeblocks found.\nMake sure you are using `js` or `ts` blocks.");
             }
+        } else {
+            message.reply("no codeblock detected.")
         }
     }
 }
