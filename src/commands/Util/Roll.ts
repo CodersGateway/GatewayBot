@@ -33,10 +33,10 @@ export default class RollCommand extends Command {
     }
 
     public async exec(message: Message, args: IRollArguments) {
-        let res: number;
-        if (args.num2 != null) res = await Rand.srandInRange(args.num2, args.num1);
-        else res = await Rand.srandInRange(args.num1);
+        const nums: number[] = [args.num1, args.num2 == null ? 0 : args.num2];
+        nums.sort((a, b) => a - b);
+        let res = await Rand.srandInRange(nums[1], nums[0]);
         res = Math.round(res);
-        message.reply(`rolled a \`${res}\`!`);
+        message.reply(`rolled \`${res}\`! *(${nums[0]}-${nums[1]})*`);
     }
 }
