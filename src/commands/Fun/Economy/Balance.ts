@@ -31,9 +31,9 @@ export default class BalanceCommand extends Command {
 
         let embed = new MessageEmbed()
             .setColor("RANDOM")
-            .addField("Total Money", `${money} :money_with_wings:`)
+            .addField("Balance", `**$${money}**`)
         //@ts-ignore
-        message.channel.send(embed)
+        message.util.send(embed)
 
     }
 }

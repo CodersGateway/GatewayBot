@@ -27,7 +27,7 @@ export default class DailyCommand extends Command {
                 .setColor("#9cc4e4")
                 .setTitle(`Hey ${message.author.username} slow down there`)
                 .setDescription(`You can redeem your daily reward in ${time.hours}h ${time.minutes}m ${time.seconds}s`)
-            message.channel.send(embed)
+            message.util.send(embed)
 
 
         } else {
@@ -36,7 +36,7 @@ export default class DailyCommand extends Command {
                 .setColor("#9cc4e4")
                 .setTitle(`Here is your daily money ${message.author.username}`)
                 .setDescription(`**$${amount}** was placed in your wallet`)
-            message.channel.send(embed)
+            message.util.send(embed)
 
             //@ts-ignore
             db.add(`money_${message.author.id}`, amount)

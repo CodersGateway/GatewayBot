@@ -34,7 +34,7 @@ function parseCodeblocks(content: string): ICodeBlock[] {
         const language: string = match[1];
         const e_off: number = content.indexOf("```", s_off + match[0].length);
         if (e_off != -1) {
-            const source: string = content.substring(s_off + match[0].length + 1, e_off);
+            const source: string = content.substring(s_off + match[0].length, e_off);
             blocks.push({
                 language,
                 source
@@ -49,7 +49,7 @@ export default class EvalCommand extends Command {
     public constructor() {
         super('eval', {
             aliases: ['eval'],
-            category: 'Util',
+            category: 'Utility',
             description: {
                 content: 'evaluates a codeblock',
                 usage: '<codeblock>',
