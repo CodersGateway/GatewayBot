@@ -66,23 +66,32 @@ export default class EvalCommand extends Command {
             blocks = blocks.filter((b) => b.language == "js" || b.language == "ts");
             if (blocks.length > 0) {
                 const block = blocks[0];
+                let emb: MessageEmbed = new MessageEmbed();
+                emb.setTitle(`_${message.author.id}.${block.language}`);
+                emb.addField("Status", "Created");
+                const msg = await message.reply(emb);
+                emb.fields.find((f) => f.name == "Status").value = "Running";
+                msg.edit(emb);
                 const res: AxiosResponse<IWebberDeno> = await axios.post("https://webber.envis10n.dev/api/v1/deno", {
                     id: message.author.id,
                     source: block.source,
                     language: block.language,
                 });
-                if (res.data.error) message.reply(res.data.error);
-                else if (res.data.eval) {
+                if (res.data.error) {
+                    emb.setColor(0xff0000);
+                    emb.fields.find((f) => f.name == "Status").value = "Failed";
+                    emb.setDescription(res.data.error);
+                    emb.setFooter("Error processing.");
+                } else if (res.data.eval) {
                     const ev = res.data.eval;
                     let resp = `\`\`\`\n${ev.output}\n\`\`\``;
                     if (resp.length > 1900) resp = `${resp.substring(0, 1900)}...\n\`\`\``;
-                    const emb: MessageEmbed = new MessageEmbed();
-                    emb.setTitle(ev.fileName)
-                        .setColor(ev.hadError ? 0xff0000 : 0x00ff00)
+                    emb.setColor(ev.hadError ? 0xff0000 : 0x00ff00)
                         .setDescription(resp)
                         .setFooter(`${ev.runtime}ms - Powered by Deno`);
-                    message.reply(emb);
+                    emb.fields.find((f) => f.name == "Status").value = "Complete"
                 }
+                msg.edit(emb);
             } else {
                 message.reply("no **valid** codeblocks found.\nMake sure you are using `js` or `ts` blocks.");
             }
