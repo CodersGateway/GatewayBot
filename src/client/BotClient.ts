@@ -1,7 +1,8 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
 import { User, Message, Collection } from "discord.js";
 import { join } from "path";
-import { prefix, owners, token } from "../Config"
+import { prefix, owners, token } from "../Config";
+import Logger from "@ayana/logger";
 
 
 declare module "discord-akairo" {
@@ -9,23 +10,19 @@ declare module "discord-akairo" {
         commandHandler: CommandHandler;
         listenerHandler: ListenerHandler;
         snipes: Collection<string, any>;
+        logger: Logger;
     }
 }
 
 interface BotOptions {
     token?: string;
     owners?: string[];
-
-    
 }
-
-
-  
 
 export default class BotClient extends AkairoClient {
 
     public snipes = new Collection<string, any>();
-
+    public logger: Logger = Logger.get(BotClient);
     public config: BotOptions;
     public listenerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "listeners")
@@ -52,7 +49,9 @@ export default class BotClient extends AkairoClient {
             },
             otherwise: ""
         },
-        ignorePermissions: owners
+        ignorePermissions: this.ownerID,
+        blockBots: true,
+        blockClient: true
     });
 
     public constructor(config: BotOptions) {
